@@ -1,10 +1,11 @@
 import fetch from "node-fetch";
 import { Handler } from "@netlify/functions";
+import { Event } from "@netlify/functions/dist/function/event";
 
-async function getNewsletters(API_KEY: string) {
+async function getNewsletters(apiKey: string) {
   const response = await fetch("https://www.getrevue.co/api/v2/issues", {
     headers: {
-      Authorization: `Token ${API_KEY}`,
+      Authorization: `Token ${apiKey}`,
     },
   });
 
@@ -13,13 +14,16 @@ async function getNewsletters(API_KEY: string) {
   return issues;
 }
 
-export const handler: Handler = async (event: { body: string }) => {
-  const apiKey = decodeURIComponent(event.body.split("=")[1]);
+export const handler: Handler = async (event: Event) => {
+  const [, unencodedApiKey] = (event.body ?? "").split("=");
+  const apiKey = unencodedApiKey ? decodeURIComponent(unencodedApiKey) : null;
 
   if (!apiKey) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: "No Revue API" }),
+      body: JSON.stringify({
+        error: "Looks like you forgot your Revue API key",
+      }),
     };
   }
 
