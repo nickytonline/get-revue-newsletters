@@ -129,5 +129,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Becauser Macs
+.DS_Store
+
 # Local Netlify folder
 .netlify
