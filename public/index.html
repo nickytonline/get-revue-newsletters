@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download your Revue Newsletters</title>
+    <style>
+      body {
+        font-family: "Comic Sans MS", system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+          "Open Sans", "Helvetica Neue", sans-serif;
+        color: white;
+        background-color: black;
+      }
+
+      * + * {
+        margin-top: 1rem;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+      }
+
+      a {
+        color: goldenrod;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Download your Revue Newsletters</h1>
+      <p>
+        This is a simple app that allows you to download your Revue newsletters
+        as JSON.
+      </p>
+      <ul>
+        <li>
+          You need a Revue API key. To get one, go to
+          <a
+            href="https://getrevue.co/app/integrations"
+            target="_blank"
+            rel="noopener"
+            >https://getrevue.co/app/integrations</a
+          >
+          and request one. It should be at the bottom of the page. It takes
+          around 24 hours to get your API key.
+        </li>
+        <li>Enter your API key below and click "Download".</li>
+        <li>
+          If for some reason this isn't working for you, you can also
+          <a href="https://github.com/nickytonline/get-revue-newsletters"
+            >grab the project locally</a
+          >, or run the
+          <a
+            href="https://gist.github.com/nickytonline/102bb45e625db6b9ae0157e293cfb0a3"
+            >script in this gist locally</a
+          >.
+        </li>
+      </ul>
+      <form
+        name="revue"
+        method="post"
+        action="/.netlify/functions/get-newsletters"
+      >
+        <label for="revue-api-key">Revue API Key</label>
+        <input type="text" name="revue-api-key" id="revue-api-key" />
+        <button type="submit">Download</button>
+      </form>
+      <output id="submitting"> </output>
+    </main>
+    <script>
+      document.forms["revue"].addEventListener("submit", function (e) {
+        document.getElementById("submitting").innerHTML =
+          "Submitting. This might take a few seconds...";
+      });
+    </script>
+  </body>
+</html>

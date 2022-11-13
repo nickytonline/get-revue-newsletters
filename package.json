@@ -1,0 +1,22 @@
+{
+  "name": "get-revue-newsletters",
+  "version": "1.0.0",
+  "description": "[Revue](https://getrevue.com) integration is [apparently being phased out at Twitter](https://dev.to/nickytonline/revue-being-phased-out-by-twitter-4kle), so grab your past newsletter issues while you can and download them.",
+  "main": "index.js",
+  "dependencies": {
+    "@netlify/functions": "^1.3.0",
+    "@types/node": "^14.18.33",
+    "node-fetch": "^3.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickytonline/get-revue-newsletters.git"
+  },
+  "keywords": [],
+  "author": "Nick Taylor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickytonline/get-revue-newsletters/issues"
+  },
+  "homepage": "https://github.com/nickytonline/get-revue-newsletters#readme"
+}
