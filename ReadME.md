@@ -2,6 +2,6 @@
 
 ## Get Revue Newsletters
 
-[Revue](https://getrevue.com) integration is [apparently being phased out at Twitter](https://dev.to/nickytonline/revue-being-phased-out-by-twitter-4kle), so grab your past newsletter issues while you can and download them.
+[Revue](https://getrevue.com) integration is [apparently being phased out at Twitter](https://www.iamdeveloper.com/blog/revue-being-phased-out-by-twitter-4kle/), so grab your past newsletter issues while you can and download them.
 
-That's it.
+If you want to read about this project, I have a short post that discusses it, [Revue being phased out by Twitter](https://www.iamdeveloper.com/blog/app-to-grab-your-revue-newsletters-1gci/).
