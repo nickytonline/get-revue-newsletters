@@ -49,11 +49,21 @@
         padding: var(--padding);
         border-radius: var(--border-radius);
       }
+
+      [aria-label="footer-navigation"] ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        font-size: 75%;
+      }
     </style>
   </head>
   <body>
     <main>
-      <h1>Download your Revue Newsletters</h1>
+      <header>
+        <h1>Download your Revue Newsletters</h1>
+      </header>
       <p>
         This is a simple app that allows you to download your Revue newsletters
         as JSON.
@@ -94,11 +104,32 @@
       </form>
       <output id="submitting"> </output>
     </main>
-    <script>
-      document.forms["revue"].addEventListener("submit", function (e) {
-        document.getElementById("submitting").innerHTML =
-          "Submitting. This might take a few seconds...";
-      });
-    </script>
+    <footer
+      role="contentinfo"
+      class="[ site-foot ] [ pad-top-700 pad-bottom-900 ]"
+    >
+      <nav aria-label="footer-navigation">
+        <ul class>
+          <li>
+            <a href="https://www.netlify.com" class="netlify-footer">
+              <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" />
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/nickytonline/get-revue-newsletters">project on GitHub</a>
+          </li>
+          </li>
+          <li>
+            <a href="https://iamdeveloper.com">iamdeveloper.com</a>
+          </li>
+        </ul>
+      </nav>
+      <script>
+        document.forms["revue"].addEventListener("submit", function (e) {
+          document.getElementById("submitting").innerHTML =
+            "Submitting. This might take a few seconds...";
+        });
+      </script>
+    </footer>
   </body>
 </html>
