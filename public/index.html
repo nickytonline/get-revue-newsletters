@@ -26,11 +26,27 @@
       }
 
       @media (prefers-color-scheme: dark) {
+        [for="theme-toggle"] {
+          display: none;
+        }
+
         body {
           --main-color: #fff;
           --main-bg-color: #000;
           --accent-color: goldenrod;
         }
+      }
+
+      @media (prefers-color-scheme: light) {
+        [for="theme-toggle"] {
+          display: none;
+        }
+      }
+
+      body:has(#theme-toggle:checked) {
+        --main-color: #fff;
+        --main-bg-color: #000;
+        --accent-color: goldenrod;
       }
 
       * + * {
@@ -40,6 +56,13 @@
       main {
         display: flex;
         flex-direction: column;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
       }
 
       a {
@@ -65,12 +88,56 @@
         list-style: none;
         font-size: 75%;
       }
+
+      [for="theme-toggle"] {
+        align-self: flex-start;
+      }
+
+      [for="theme-toggle"]::before {
+        font-size: 150%;
+      }
+
+      [for="theme-toggle"]:has(#theme-toggle:checked)::before {
+        content: "☀️";
+      }
+
+      [for="theme-toggle"]:not(:has(#theme-toggle:checked))::before {
+        content: "🌙";
+      }
+
+      #theme-toggle:checked + [role="status"] #light-mode-status {
+        display: none;
+      }
+
+      #theme-toggle:not(:checked) + [role="status"] #dark-mode-status {
+        display: none;
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
     </style>
   </head>
   <body>
     <main>
       <header>
         <h1>Download your Revue Newsletters</h1>
+        <label for="theme-toggle"
+          ><span class="visually-hidden">Toggle Theme</span>
+          <input type="checkbox" class="visually-hidden" id="theme-toggle" />
+          <div role="status" class="visually-hidden">
+            The theme has been set to <span id="light-mode-status">light</span
+            ><span id="dark-mode-status">dark</span>
+          </div>
+        </label>
       </header>
       <p>
         This is a simple app that allows you to download your Revue newsletters
